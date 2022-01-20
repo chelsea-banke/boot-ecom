@@ -17,8 +17,9 @@
             background-repeat: no-repeat;
             height: 300px;
         }
+        form{margin-left: 5%;}
         .motto{
-            margin-top: 140px;
+            margin-top: 132px;
             margin-left: 5%;
             border-left: 1px solid orange;
             background-color: black;
@@ -28,10 +29,18 @@
             font-family: sans-serif;
             color: white;
         }
+        .link:hover{
+            border-bottom: 1px solid white;
+        }
         .links{
             font-family: sans-serif;
             margin-right: 10%;
             margin-top: 28px;
+        }
+        .enc{font-size: 100%}
+        .nav{
+            margin-top: 20px;
+            margin-left: 5%;
         }
     </style>
 </head>
@@ -50,9 +59,21 @@
                 </ul>
             </div>
         </footer>
-        <div class="container-flex border-bottom border-warning imagefooter">
-            <br>
-            <h1 class="display-4 text-left text-white border-warning motto">We provide <br> You Build</h1>
+        <div class="container-flex border-bottom border-warning imagefooter"><br>
+            <div class="row motto">
+                <h1 class="col-6 display-4 text-left text-white border-warning">We provide <br> You Build</h1>
+                <p class="col-6 my-4 enc">Get your construction materials and start building today!</p>
+            </div>
         </div>
+        <nav>
+            <ul class="nav">
+                <li class="nav-item"><input type="text" placeholder="item"></input></li>
+                <li class="nav-item"><button class="btn btn-warnning text-white">Search</button></li>
+                <li class="nav-item"><a href="" class="nav-link text-warning">New</a></li>
+                <li class="nav-item"><a href="" class="nav-link text-warning">Steel</a></li>
+                <li class="nav-item"><a href="" class="nav-link text-warning">Wood</a></li>
+                <li class="nav-item"><a href="" class="nav-link text-warning">machines</a></li>
+            </ul>
+        </nav>
     </body>
 </head>
