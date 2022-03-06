@@ -65,6 +65,20 @@
             margin-top: 20px;
             margin-left: -30px;
         }
+        #cart{
+            position: absolute;
+            right: 25px;
+            margin-top: -48px;
+        }
+        @media screen and (max-width: 434px) {
+        #search-input{
+            width: 200px;
+        }
+        #cart{
+            right: 20px;
+            /* margin-top: 0px; */
+        }
+        }
         @media only screen and (max-width: 360px) {
             .tlinks{
             margin-left: 10px;
@@ -103,9 +117,10 @@
                 <li class="nav-item"><a href="#steel" class="nav-link text-warning">Steel</a></li>
                 <li class="nav-item"><a href="#wood" class="nav-link text-warning">Wood</a></li>
                 <li class="nav-item"><a href="" class="nav-link text-warning">machines</a></li>
-                <li class="nav-item my-1"><input type="text" placeholder="item"></input></li>
-                <li class="nav-item"><button class="btn btn-warnning border border-warning text-white">Search</button></li>
+                <li class="nav-item my-1"><input type="text" placeholder="item" id="search-input"></input></li>
+                <li class="nav-item"><button class="btn text-white" id="search">Search</button></li>
             </ul>
+            <button class="btn bg-warning text-dark" id="cart">Cart</button>
         </nav>
         <!-- product section -->
         <div class="cantainer mx-4 products">
@@ -120,8 +135,8 @@
             <div class="row border-bottom border-warning" id="wood-section"></div><br>
         </div>
         <!-- footer section -->
-        <footer class="page-footer bg-dark text-center">
-            <button type="button" class="btn btn-light text-black">view cart</button>
+        <footer class="page-footer bg-dark py-1 text-center">
+            <!-- <button type="button" class="btn btn-light text-black">view cart</button> -->
             <div class="foot">
                 <ul class="btn-group">
                     <a href="" class="btn"><li class="border-bottom border-warning link">Home</li></a>
