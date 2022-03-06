@@ -7,10 +7,24 @@
     <title>Brico commerce</title>
     <link rel="stylesheet" href="/bootstrap.min.css">
     <style>
-        ul{list-style-type: none}
-        .logo{margin-left: 50px}
-        .links{float: right}
-        footer{border-bottom: 1px solid orange}
+        body{
+            background-color: rgb(139, 139, 139);
+        }
+        ul{
+            list-style-type: none;
+        }
+        .logo{
+            margin-left: 50px;
+        }
+        .links{
+            float: right;
+        }
+        /* .products{
+            width: 80%;
+        } */
+        footer{
+            border-bottom: 1px solid orange;
+        }
         .barner{
             background-image: url('/open2.jpg');
             background-size: 100% auto;
@@ -58,9 +72,9 @@
         }
     </style>
 </head>
-    <body class="bg-dark text-white">
+    <body class="text-white">
         <!-- header -->
-        <header class="row border-bottom border-warning">
+        <header class="row bg-dark border-bottom border-warning">
             <div class="col-7">
                 <h1 class="display-2 my-2 logo text-warning">-BRICO-</h1>
             </div>
@@ -70,7 +84,7 @@
                     <a href="" class="btn"><li class="border-bottom border-warning link">Home</li></a>
                     <a href="" class="btn"><li class="link">About</li></a>
                     <a href="" class="btn"><li class="link">contact</li></a>
-                    <a href="" class="btn"><li class="link">cart</li></a>
+                    <!-- <a href="" class="btn"><li class="link">cart</li></a> -->
                     <li><button type="button" class="btn btn-warning bg-dark text-white">Login</button></li>
                 </ul>
             </div>
@@ -94,7 +108,7 @@
             </ul>
         </nav>
         <!-- product section -->
-        <div class="cantainer-flex mx-4 products">
+        <div class="cantainer mx-4 products">
             <!-- Hot promo section -->
             <h5 class="text-decoration-underline text-warning" id="promo">Hot Promo !!!</h5>
             <div class="row border-bottom border-warning" id="promo-section"></div><br>
@@ -106,7 +120,7 @@
             <div class="row border-bottom border-warning" id="wood-section"></div><br>
         </div>
         <!-- footer section -->
-        <footer class="page-footer text-center">
+        <footer class="page-footer bg-dark text-center">
             <button type="button" class="btn btn-light text-black">view cart</button>
             <div class="foot">
                 <ul class="btn-group">
