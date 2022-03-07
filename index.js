@@ -105,8 +105,29 @@ cartDismiss.addEventListener('click', function(){
 })
 
 
+function displayCart(){
+    shopedItems.forEach(shopedItem => {
+        let shopedItemRow = document.createElement("tr");
+        shopedItemRow.classList.add("shoped-item");
+        shopedItemRow.innerHTML = `
+            <td>${shopedItem.name}</td>
+            <td>${shopedItem.price}$</td>
+            <td><button class="btn btn-danger remove" value="${shopedItems.indexOf(shopedItem)}">remove</button></td>
+        </tr>
+        `
+        total += parseFloat(shopedItem.price)
+        document.getElementById("table-body").prepend(shopedItemRow);
+    })
+}
+let shopedItems;
+if(localStorage.getItem('cart') === null){
+    shopedItems = [];
+} else{
+    shopedItems = JSON.parse(localStorage.getItem('cart'));
+    displayCart();
+}
+
 let shopedItemIndex = 0;
-let shopedItems = [];
 let shop = document.querySelectorAll(".shop");
 shop.forEach(shopedItem => {
     shopedItem.addEventListener("click", function(event){
@@ -114,42 +135,21 @@ shop.forEach(shopedItem => {
 
         document.getElementById("table-body").innerHTML="";
         total=0
-        shopedItems.forEach(shopedItem => {
-            let shopedItemRow = document.createElement("tr");
-            shopedItemRow.classList.add("shoped-item");
-            shopedItemRow.innerHTML = `
-                <td>${shopedItem.name}</td>
-                <td>${shopedItem.price}$</td>
-                <td><button class="btn btn-danger remove" value="${shopedItems.indexOf(shopedItem)}">remove</button></td>
-            </tr>
-            `
-            total += parseFloat(shopedItem.price)
-            document.getElementById("table-body").prepend(shopedItemRow);
-        })
+        displayCart();
         document.getElementById("total").innerHTML = total.toFixed(2)+'$';
+        localStorage.setItem('cart', JSON.stringify(shopedItems));
     })
 })
 
 document.getElementById("table-body").addEventListener('click', function(event){
     if (event.target.classList.contains("remove")){
         let removedItem = event.target;
-        console.log(removedItem)
         shopedItems.splice(parseInt(removedItem.value), 1);
 
         document.getElementById("table-body").innerHTML="";
         total=0
-        shopedItems.forEach(shopedItem => {
-            let shopedItemRow = document.createElement("tr");
-            shopedItemRow.classList.add("shoped-item");
-            shopedItemRow.innerHTML = `
-                <td>${shopedItem.name}</td>
-                <td>${shopedItem.price}$</td>
-                <td><button class="btn btn-danger remove" value="${shopedItems.indexOf(shopedItem)}">remove</button></td>
-            </tr>
-            `
-            total += parseFloat(shopedItem.price)
-            document.getElementById("table-body").prepend(shopedItemRow);
-        })
+        displayCart();
         document.getElementById("total").innerHTML = total.toFixed(2)+'$';
+        localStorage.setItem('cart', JSON.stringify(shopedItems));
     }
 })
