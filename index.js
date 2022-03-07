@@ -24,7 +24,7 @@ let woods = [
     new item("texture-3", "wood3.jpg", "22.$", "0%"),
     new item("texture-4", "wood4.jpg", "25.0$", "0%")
 ]
-let AllItems = promo.concat(steels, woods);
+let allItems = promo.concat(steels, woods);
 
 let index = 0;
 promo.forEach(_item => {
@@ -98,7 +98,23 @@ cartMenu.addEventListener('click', function(){
     else{document.getElementById("cart-items").style.display = "none";}
 })
 
+let shopedItems = [];
 const shop = document.querySelectorAll(".shop");
-shop.forEach(shopItem => {
-    
+    shop.forEach(shopedItem => {
+        shopedItem.addEventListener("click", function(event){
+            shopedItems.push(allItems[parseInt(event.target.value)]);
+            console.log(shopedItems);
+
+            shopedItems.forEach(shopedItem => {
+                let shopedItemRow = document.createElement("tr");
+                shopedItemRow.classList.add("shoped-item");
+                shopedItemRow.innerHTML = `
+                    <td>${shopedItem.name}</td>
+                    <td>${shopedItem.price}</td>
+                    <td><button class="btn btn-danger">remove</button></td>
+                </tr>
+                `
+                document.getElementById("table-body").prepend(shopedItemRow);
+            })
+        })
 })
