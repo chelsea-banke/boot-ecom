@@ -27,56 +27,89 @@ let woods = [
 let allItems = promo.concat(steels, woods);
 let index = 0;
 promo.forEach(_item => {
+    let carouselItem = document.createElement("div");
+    carouselItem.classList.add("carousel-item");
+    carouselItem.value = index;
+    carouselItem.innerHTML = `
+        <img src="/${_item.source}" width="50%"> 
+        <p>${_item.name}<br>
+            <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${_item.price}</button>
+        </p>`
+    document.getElementById("carousel").append(carouselItem);
+
     let itemContainer = document.createElement("div");
-    itemContainer.classList.add("col-md-3");
-    itemContainer.innerHTML = `<div class="thumbnail">
-    <img src="/${_item.source}" style="width: 100%" alt="${_item.name}">
-    <div class="card">
-        <div class="row card-footer">
-            <h5 class="col-5 text-primary">${_item.name}</h5>
-            <p class="col-7 text-dark">${_item.price}$/ <span class="text-success">${_item.disc}% off</span></p>
-            <button type="button" class="btn btn-success shop" value="${index}">shop item<button>
-        </div>
-    </div>
-</div>`
-document.getElementById("promo-section").append(itemContainer);
-index ++;
-})
-steels.forEach(steel => {
-    let itemContainer = document.createElement("div");
-    itemContainer.classList.add("col-md-3");
+    itemContainer.classList.add("col-4", "thumbnail");
     itemContainer.innerHTML = `
-    <div class="thumbnail">
-        <img src="/${steel.source}" alt="${steel.name}" style="width: 100%;">
-        <div class="card">
-            <div class="row card-footer">
-                <h5 class="col-5 text-primary">${steel.name}</h5>
-                <p class="col-7 text-dark">${steel.price}$/m<span class="text-success"> ${steel.disc}% off</span></p>
-                <button type="button" class="btn btn-success shop" value="${index}">shop item<button>
-            </div>
-        </div> 
-    </div>
-    `;
-    document.getElementById("steel-section").append(itemContainer);
+        <button class="btn item-image" value="${index}">
+            <img src="/${_item.source}" style="width: 100%" alt="${_item.name}">
+        </button>`
+    document.getElementById("promo-gallery").append(itemContainer);
+
+    index ++;
+})
+
+steels.forEach(steel => {
+    let carouselItem = document.createElement("div");
+    carouselItem.classList.add("carousel-item");
+    carouselItem.value = index;
+    carouselItem.innerHTML = `
+        <img src="/${steel.source}" width="50%"> 
+        <p>${steel.name}<br>
+            <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${steel.price}</button>
+        </p>`
+    document.getElementById("carousel").append(carouselItem);
+
+    let itemContainer = document.createElement("div");
+    itemContainer.classList.add("col-4", "thumbnail");
+    itemContainer.innerHTML = `
+        <button class="btn item-image" value="${index}">
+            <img src="/${steel.source}" style="width: 100%" alt="${steel.name}">
+        </button>`
+    document.getElementById("steel-gallery").append(itemContainer);
+
     index ++;
 })
 woods.forEach(wood => {
+    let carouselItem = document.createElement("div");
+    carouselItem.classList.add("carousel-item");
+    carouselItem.value = index;
+    carouselItem.innerHTML = `
+        <img src="/${wood.source}" width="50%"> 
+        <p>${wood.name}<br>
+            <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${wood.price}</button>
+        </p>`
+    document.getElementById("carousel").append(carouselItem);
+
     let itemContainer = document.createElement("div");
-    itemContainer.classList.add("col-md-3");
+    itemContainer.classList.add("col-4", "thumbnail");
     itemContainer.innerHTML = `
-    <div class="thumbnail">
-        <img src="/${wood.source}" alt="${wood.name}" style="width: 100%;">
-        <div class="card">
-            <div class="row card-footer">
-                <h5 class="col-5 text-primary">${wood.name}</h5>
-                <p class="col-7 text-dark">${wood.price}$/m<sup>2</sup> <span class="text-success"> ${wood.disc}% off</span></p>
-                <button type="button" class="btn btn-success shop" value="${index}">shop item<button>
-            </div>
-        </div> 
-    </div>
-    `;
-    document.getElementById("wood-section").append(itemContainer);
+        <button class="btn item-image" value="${index}">
+            <img src="/${wood.source}" style="width: 100%" alt="${wood.name}">
+        </button>`
+    document.getElementById("wood-gallery").append(itemContainer);
+
     index ++;
+    
+})
+
+let carouselItems = document.querySelectorAll(".carousel-item");
+carouselItems.forEach(carouselItem => {
+    if (parseInt(carouselItem.value) === 0){
+        carouselItem.style.display = "block";
+    }
+})
+
+let itemImages = document.querySelectorAll(".item-image");
+itemImages.forEach(itemImage => {
+    itemImage.addEventListener("click", function(){
+        carouselItems.forEach(carouselItem => {
+            if (parseInt(carouselItem.value) === parseInt(itemImage.value)){
+                carouselItem.style.display = "block";
+                document.getElementById("banner").scrollIntoView({behavior: "smooth", block: "start"});
+            }
+            else {carouselItem.style.display = "none"}
+        })
+    })
 })
 
 function toogle(parameter){
@@ -88,7 +121,6 @@ function toogle(parameter){
     }
 }
 
-
 let cartToogle = false;
 const cartMenu = document.getElementById("cart");
 cartMenu.addEventListener('click', function(){
@@ -97,13 +129,11 @@ cartMenu.addEventListener('click', function(){
     else{document.getElementById("cart-items").style.display = "none";}
 })
 
-
 let cartDismiss = document.getElementById("cart-dismiss");
 cartDismiss.addEventListener('click', function(){
     document.getElementById("cart-items").style.display = "none";
     cartToogle = false;
 })
-
 
 function displayCart(){
     shopedItems.forEach(shopedItem => {
@@ -119,6 +149,7 @@ function displayCart(){
         document.getElementById("table-body").prepend(shopedItemRow);
     })
 }
+
 let shopedItems;
 if(localStorage.getItem('cart') === null){
     shopedItems = [];

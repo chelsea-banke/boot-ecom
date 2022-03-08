@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/bootstrap.min.css">
     <style>
         body{
-            background-color: rgb(139, 139, 139);
+            background-color: rgb(0, 0, 0);
             overflow-x: hidden;
         }
         #cart-items{
@@ -89,9 +89,33 @@
         #cart-dismiss:hover{
             cursor: pointer;
         }
+        #carousel{
+            background-color: rgb(0, 0, 0);
+            overflow: hidden;
+        }
+        #banner{
+            scroll-margin-top: -100px;
+        }
+        .carousel-item{
+            display: none;
+            position: relative;
+        }
+        .carousel-item img{
+            border-radius: 5px;
+            box-shadow: 5px 5px 10px -5px rgb(145, 145, 145);
+        }
+        #promo-gallery, #wood-gallery, #steel-gallery{
+            border-bottom: 1px solid black;
+        }
         @keyframes cart-display{
             0%{right: -200px;}
             100%{right: 0px;}
+        }
+        @media screen and (min-width: 434px) {
+            .carousel-item img{
+                width: 400px;
+                height: 400px;
+            }
         }
         @media screen and (max-width: 434px) {
             #cart-items{
@@ -130,7 +154,7 @@
             </div>
         </header>
         <!-- header barner -->
-        <div class="container-flex border-bottom border-warning barner"><br>
+        <div class="container-flex border-bottom border-warning barner" id="banner"><br>
             <div class="row border-bottom border-warning motto">
                 <h1 class="col-6 display-4 text-left text-white border-warning">We provide <br> You Build</h1>
                 <p class="col-6 my-4 enc">Get your construction materials and start building today!</p>
@@ -166,16 +190,18 @@
             </div>
         </nav>
         <!-- product section -->
-        <div class="cantainer mx-4 products">
-            <!-- Hot promo section -->
-            <h5 class="text-decoration-underline text-warning" id="promo">Hot Promo !!!</h5>
-            <div class="row border-bottom border-warning" id="promo-section"></div><br>
+        <div class="cantainer bg-white  text-center mx-4" id="products">
+            <!-- carousel -->
+            <div class="text-center py-4" id="carousel"></div>
+            <!-- promo section -->
+            <h5 class="text-decoration-underline text-dark" id="promo">Hot Promo !!!</h5>
+            <div class="row" id="promo-gallery"></div><br>
             <!-- steel section -->
-            <h5 class="text-decoration-underline text-warning" id="steel">Steel</h5>
-            <div class="row border-bottom border-warning" id="steel-section"></div><br>
+            <h5 class="text-decoration-underline text-dark" id="steel">Steel</h5>
+            <div class="row" id="steel-gallery"></div><br>
             <!-- wood section -->
-            <h5 class="text-decoration-underline text-warning" id="wood">Wood</h5>
-            <div class="row border-bottom border-warning" id="wood-section"></div><br>
+            <h5 class="text-decoration-underline text-dark" id="wood">Wood</h5>
+            <div class="row" id="wood-gallery"></div><br>
         </div>
         <!-- footer section -->
         <footer class="page-footer bg-dark py-1 text-center">
