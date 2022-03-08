@@ -105,6 +105,8 @@
         .carousel-item{
             display: none;
             position: relative;
+            animation-name: carousel-display;
+            animation-duration: 2s;
         }
         .carousel-item img{
             border-radius: 5px;
@@ -155,6 +157,10 @@
         @keyframes menu-display{
             0%{right: -200px;}
             100%{right: -15px;}
+        }
+        @keyframes carousel-display{
+            0%{right: -100px;}
+            100%{right: 0%;}
         }
         @keyframes cart-display{
             0%{right: -200px;}
