@@ -68,21 +68,21 @@ allItems.forEach(product => {
 let carouselItems = document.querySelectorAll(".carousel-item");
 let switchIndex = 0;
 carouselItems[switchIndex].style.display = "block";
-switchCarousel = function() {
-    console.log(carouselItems.length);
-    switchIndex = (switchIndex+1) % (carouselItems.length);
-    console.log("loaded ", switchIndex);
-    if (switchIndex === 0){
-        let temp = carouselItems.length - 1;
-        carouselItems[temp].style.display = "none";
-    }
-    else{
-        carouselItems[switchIndex-1].style.display = "none";
-    }
-    carouselItems[switchIndex].style.display = "block";
-    console.log("loaded ", switchIndex);
-};
-document.body.onload(setInterval(switchCarousel, 4000));
+// switchCarousel = function() {
+//     console.log(carouselItems.length);
+//     switchIndex = (switchIndex+1) % (carouselItems.length);
+//     console.log("loaded ", switchIndex);
+//     if (switchIndex === 0){
+//         let temp = carouselItems.length - 1;
+//         carouselItems[temp].style.display = "none";
+//     }
+//     else{
+//         carouselItems[switchIndex-1].style.display = "none";
+//     }
+//     carouselItems[switchIndex].style.display = "block";
+//     console.log("loaded ", switchIndex);
+// };
+// document.body.onload(setInterval(switchCarousel, 4000));
 
 let modalItems = document.querySelectorAll(".modal-item");
 let itemImages = document.querySelectorAll(".item-image");
