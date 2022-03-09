@@ -89,6 +89,12 @@
         #cart-dismiss:hover{
             cursor: pointer;
         }
+        #products{
+            max-height: 500px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            border-radius: 5px;
+        }
         #carousel{
             background-color: rgb(0, 0, 0);
             overflow: hidden;
@@ -226,10 +232,10 @@
                 </table>
             </div>
         </nav>
+        <!-- carousel -->
+        <div class="text-center py-4" id="carousel"></div>
         <!-- product section -->
         <div class="cantainer bg-white  text-center mx-4" id="products">
-            <!-- carousel -->
-            <div class="text-center py-4" id="carousel"></div>
             <!-- promo section -->
             <h5 class="text-decoration-underline text-dark" id="promo">Hot Promo !!!</h5>
             <div class="row" id="promo-gallery"></div><br>
