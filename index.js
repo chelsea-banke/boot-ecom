@@ -1,114 +1,89 @@
 class item {
-    constructor(name, source, price, discount){
+    constructor(name, category, source, price, discount, promo = false){
         this.name = name;
+        this.category = category; 
         this.source = source;
         this.price = price;
         this.disc = discount;
+        this.promo = promo;
     }
 }
-let promo = [
-    new item("Power drill", "power-drill.jpg", "300.1", "17"),
-    new item("Paint brush", "paint-brush.jpg", "50.6", "5"),
-    new item("Wheelbarrow", "wheelbarrow.jpg", "120.99", "23"),
-    new item("Saw", "saw.jpg", "75.0$", "9%")
-]
-let steels = [
-    new item("steel rods", "rods.jpg", "10.0", "0"),
-    new item("iron rods", "rust rods.jpg", "9.2", "3"),
-    new item("steel bars", "square bars.jpg", "15.5", "0"),
-    new item("steal weave", "metal weave.jpg", "15.0", "0")
-]
-let woods = [
-    new item("texture-1", "wood1.jpg", "20", "9"), 
-    new item("texture-2", "wood2.jpg", "23.0", "3"),
-    new item("texture-3", "wood3.jpg", "22.0", "0"),
-    new item("texture-4", "wood4.jpg", "25.0", "0")
-]
-let allItems = promo.concat(steels, woods);
+
+let allItems = [
+    new item("Power drill", "tool", "power-drill.jpg", "300.1", "17", true),
+    new item("Paint brush", "tool", "paint-brush.jpg", "50.6", "5"),
+    new item("Wheelbarrow", "tool", "wheelbarrow.jpg", "120.99", "23"),
+    new item("Saw", "saw.jpg", "tool", "75.0$", "9%"),
+    new item("steel rods", "steel", "rods.jpg", "10.0", "0"),
+    new item("iron rods", "steel", "rust rods.jpg", "9.2", "3"),
+    new item("steel bars", "steel", "square bars.jpg", "15.5", "0"),
+    new item("steal weave", "steel", "metal weave.jpg", "15.0", "0"),
+    new item("texture-1", "wood", "wood1.jpg", "20", "9"), 
+    new item("texture-2", "wood", "wood2.jpg", "23.0", "3"),
+    new item("texture-3", "wood", "wood3.jpg", "22.0", "0"),
+    new item("texture-4", "wood", "wood4.jpg", "25.0", "0")
+];
+
 let index = 0;
-promo.forEach(_item => {
-    let carouselItem = document.createElement("div");
-    carouselItem.classList.add("carousel-item");
-    carouselItem.value = index;
-    carouselItem.innerHTML = `
-        <img src="/${_item.source}" width="50%"> 
-        <p>${_item.name}<br>
-            <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${_item.price}</button>
-        </p>`
-    document.getElementById("carousel").append(carouselItem);
-
-    let itemContainer = document.createElement("div");
-    itemContainer.classList.add("col-4", "thumbnail");
-    itemContainer.innerHTML = `
-        <button class="btn item-image" value="${index}">
-            <img src="/${_item.source}" style="width: 100%" alt="${_item.name}">
-        </button>`
-    document.getElementById("promo-gallery").append(itemContainer);
-
-    index ++;
-})
-
-steels.forEach(steel => {
-    let carouselItem = document.createElement("div");
-    carouselItem.classList.add("carousel-item");
-    carouselItem.value = index;
-    carouselItem.innerHTML = `
-        <img src="/${steel.source}" width="50%"> 
-        <p>${steel.name}<br>
-            <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${steel.price}</button>
-        </p>`
-    document.getElementById("carousel").append(carouselItem);
-
-    let itemContainer = document.createElement("div");
-    itemContainer.classList.add("col-4", "thumbnail");
-    itemContainer.innerHTML = `
-        <button class="btn item-image" value="${index}">
-            <img src="/${steel.source}" style="width: 100%" alt="${steel.name}">
-        </button>`
-    document.getElementById("steel-gallery").append(itemContainer);
-
-    index ++;
-})
-woods.forEach(wood => {
-    let carouselItem = document.createElement("div");
-    carouselItem.classList.add("carousel-item");
-    carouselItem.value = index;
-    carouselItem.innerHTML = `
-        <img src="/${wood.source}" width="50%"> 
-        <p>${wood.name}<br>
-            <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${wood.price}</button>
-        </p>`
-    document.getElementById("carousel").append(carouselItem);
-
-    let itemContainer = document.createElement("div");
-    itemContainer.classList.add("col-4", "thumbnail");
-    itemContainer.innerHTML = `
-        <button class="btn item-image" value="${index}">
-            <img src="/${wood.source}" style="width: 100%" alt="${wood.name}">
-        </button>`
-    document.getElementById("wood-gallery").append(itemContainer);
-
-    index ++;
-    
-})
-
-let carouselItems = document.querySelectorAll(".carousel-item");
-carouselItems.forEach(carouselItem => {
-    if (parseInt(carouselItem.value) === 0){
-        carouselItem.style.display = "block";
+allItems.forEach(product => {
+    if (product.promo){
+        let carouselItem = document.createElement("div");
+        carouselItem.classList.add("carousel-item");
+        carouselItem.value = index;
+        carouselItem.innerHTML = `
+            <img src="/${product.source}" width="50%"> 
+            <p>${product.name}<br>
+                <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${product.price}</button>
+            </p>`
+        document.getElementById("promo-carousel").append(carouselItem);
     }
+
+    let modalContent = document.createElement("div");
+    modalContent.classList.add("modal-item");
+    modalContent.value = index;
+    modalContent.innerHTML = `
+        <p class="cancel-modal">X</p>
+        <img src="/${product.source}" width="50%">
+        <p>${product.name}<br>
+            <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${product.price}</button>
+        </p>
+    `
+    document.getElementById("modal-overlay").append(modalContent);
+
+    let itemContainer = document.createElement("div");
+    itemContainer.classList.add("col-4", "thumbnail");
+    itemContainer.innerHTML = `
+        <button class="btn item-image" value="${index}">
+            <img src="/${product.source}" style="width: 100%" alt="${product.name}">
+        </button>
+        <p class="text-dark">${product.name}</p>`
+
+    if (product.category === "tool"){document.getElementById("tool-gallery").append(itemContainer)}
+    else if(product.category === "steel"){document.getElementById("steel-gallery").append(itemContainer)}
+    else if(product.category === "wood"){document.getElementById("wood-gallery").append(itemContainer)}
+
+    index ++;
 })
+
+let modalItems = document.querySelectorAll(".modal-item");
 
 let itemImages = document.querySelectorAll(".item-image");
 itemImages.forEach(itemImage => {
     itemImage.addEventListener("click", function(){
-        carouselItems.forEach(carouselItem => {
-            if (parseInt(carouselItem.value) === parseInt(itemImage.value)){
-                carouselItem.style.display = "block";
-                document.getElementById("banner").scrollIntoView({behavior: "smooth", block: "start"});
+        modalItems.forEach(modalItem => {
+            if (parseInt(modalItem.value) === parseInt(itemImage.value)){
+                document.getElementById("modal-overlay").style.display = "block";
+                modalItem.style.display = "block";
             }
-            else {carouselItem.style.display = "none"}
+            else {modalItem.style.display = "none"}
         })
+    })
+})
+
+document.querySelectorAll(".cancel-modal").forEach(cancel => {
+    cancel.addEventListener("click", function(){
+        console.log("canceled");
+        document.getElementById("modal-overlay").style.display = "none";
     })
 })
 
