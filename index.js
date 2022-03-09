@@ -121,6 +121,17 @@ function toogle(parameter){
     }
 }
 
+let menuToogle = false;
+document.getElementById("toogle-menu").addEventListener("click", function(){
+    menuToogle = toogle(menuToogle);
+    if (menuToogle){
+        document.getElementById("toogle-items").style.display = "block";
+    }
+    else {
+        document.getElementById("toogle-items").style.display = "none";      
+    }
+})
+
 let cartToogle = false;
 const cartMenu = document.getElementById("cart");
 cartMenu.addEventListener('click', function(){
@@ -183,4 +194,11 @@ document.getElementById("table-body").addEventListener('click', function(event){
         document.getElementById("total").innerHTML = total.toFixed(2)+'$';
         localStorage.setItem('cart', JSON.stringify(shopedItems));
     }
+})
+
+document.getElementById('purchase').addEventListener("click", function(){
+    shopedItems = [];
+    localStorage.setItem('cart', JSON.stringify(shopedItems));
+    displayCart();
+    window.alert("purchase complete");
 })
