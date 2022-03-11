@@ -94,20 +94,22 @@
             overflow-y: scroll;
             overflow-x: hidden;
             border-radius: 5px;
+            box-shadow: -5px -10px 10px -5px rgb(114, 114, 114) inset, 5px 0px 10px -5px rgb(114, 114, 114) inset;
         }
         #promo-carousel{
             background-color: rgb(0, 0, 0);
             overflow: hidden;
+            height: 300px;
         }
         #banner{
             scroll-margin-top: -100px;
         }
-        /* .carousel-item{
+        .carousel-item{
             display: none;
             position: relative;
             animation-name: carousel-display;
-            animation-duration: 2s;
-        } */
+            animation-duration: 6s;
+        }
         .carousel-item img{
             border-radius: 5px;
             box-shadow: 5px 5px 10px -5px rgb(145, 145, 145);
@@ -154,14 +156,20 @@
             margin-right: 15px;
             font-weight: bold;
         }
+        #search-input{
+            background-color: rgb(255, 255, 255);
+            border-radius: 3px;
+            border: none;
+        }
         @keyframes menu-display{
             0%{right: -200px;}
             100%{right: -15px;}
         }
-        /* @keyframes carousel-display{
-            0%{right: -100px;}
-            100%{right: 0%;}
-        } */
+        @keyframes carousel-display{
+            0%{right: -200px;}
+            50%{right: 0px;}
+            100%{right: 400px;}
+        }
         @keyframes cart-display{
             0%{right: -200px;}
             100%{right: 0px;}
@@ -234,7 +242,7 @@
             </div>
         </div>
         <!-- nav bar -->
-        <nav class="sticky-top bg-dark">
+        <nav class="sticky-top bg-dark" id="nav">
             <ul class="nav">
                 <li class="nav-item"><a href="#promo-carousel" class="nav-link text-warning">Promo</a></li>
                 <li class="nav-item"><a href="#tool" class="nav-link text-warning">tools</a></li>
@@ -274,8 +282,10 @@
             <div class="row" id="steel-gallery"></div><br>
             <!-- wood section -->
             <h5 class="text-decoration-underline text-dark" id="wood">Wood</h5>
-            <div class="row" id="wood-gallery"></div><br>
+            <div class="row" id="wood-gallery" style="border: none;"></div><br>
         </div>
+        <br>
+        <!-- modal section -->
         <div class="text-center" id="modal-overlay"></div>
         <!-- footer section -->
         <footer class="page-footer bg-dark py-1 text-center">

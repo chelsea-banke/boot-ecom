@@ -31,7 +31,7 @@ allItems.forEach(product => {
         carouselItem.classList.add("carousel-item");
         carouselItem.value = index;
         carouselItem.innerHTML = `
-            <img src="/${product.source}" width="50%"> 
+            <img class="item-image" src="/${product.source}" width="50%" value="${index}"> 
             <p>${product.name}<br>
                 <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${product.price}</button>
             </p>`
@@ -68,30 +68,29 @@ allItems.forEach(product => {
 let carouselItems = document.querySelectorAll(".carousel-item");
 let switchIndex = 0;
 carouselItems[switchIndex].style.display = "block";
-// switchCarousel = function() {
-//     console.log(carouselItems.length);
-//     switchIndex = (switchIndex+1) % (carouselItems.length);
-//     console.log("loaded ", switchIndex);
-//     if (switchIndex === 0){
-//         let temp = carouselItems.length - 1;
-//         carouselItems[temp].style.display = "none";
-//     }
-//     else{
-//         carouselItems[switchIndex-1].style.display = "none";
-//     }
-//     carouselItems[switchIndex].style.display = "block";
-//     console.log("loaded ", switchIndex);
-// };
-// document.body.onload(setInterval(switchCarousel, 4000));
+switchCarousel = function() {
+    switchIndex = (switchIndex+1) % (carouselItems.length);
+    carouselItems[switchIndex].style.display = "block";
+    if (switchIndex === 0){
+        let temp = carouselItems.length - 1;
+        carouselItems[temp].style.display = "none";
+    }
+    else{
+        carouselItems[switchIndex-1].style.display = "none";
+    }
+};
+setInterval(switchCarousel, 4500);
 
 let modalItems = document.querySelectorAll(".modal-item");
 let itemImages = document.querySelectorAll(".item-image");
 itemImages.forEach(itemImage => {
     itemImage.addEventListener("click", function(){
         modalItems.forEach(modalItem => {
-            if (parseInt(modalItem.value) === parseInt(itemImage.value)){
+            if (parseInt(modalItem.value) === parseInt(itemImage.getAttribute("value"))){
                 document.getElementById("modal-overlay").style.display = "block";
                 modalItem.style.display = "block";
+                document.getElementById("nav").classList.remove("sticky-top");
+                document.body.style.overflow = "hidden";
             }
             else {modalItem.style.display = "none"}
         })
@@ -100,8 +99,9 @@ itemImages.forEach(itemImage => {
 
 document.querySelectorAll(".cancel-modal").forEach(cancel => {
     cancel.addEventListener("click", function(){
-        console.log("canceled");
         document.getElementById("modal-overlay").style.display = "none";
+        document.getElementById("nav").classList.add("sticky-top");
+        document.body.style.overflow = "scroll";
     })
 })
 
