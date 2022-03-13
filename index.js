@@ -10,18 +10,18 @@ class item {
 }
 
 let allItems = [
-    new item("Power drill", "tool", "power-drill.jpg", "300.1", "17", true),
-    new item("Paint brush", "tool", "paint-brush.jpg", "50.6", "5"),
-    new item("Wheelbarrow", "tool", "wheelbarrow.jpg", "120.99", "23", true),
-    new item("Saw", "saw.jpg", "tool", "75.0$", "9%"),
-    new item("steel rods", "steel", "rods.jpg", "10.0", "0"),
-    new item("iron rods", "steel", "rust rods.jpg", "9.2", "3"),
-    new item("steel bars", "steel", "square bars.jpg", "15.5", "0", true),
-    new item("steal weave", "steel", "metal weave.jpg", "15.0", "0"),
-    new item("texture-1", "wood", "wood1.jpg", "20", "9"), 
-    new item("texture-2", "wood", "wood2.jpg", "23.0", "3"),
-    new item("texture-3", "wood", "wood3.jpg", "22.0", "0", true),
-    new item("texture-4", "wood", "wood4.jpg", "25.0", "0")
+    new item("Power drill", "tool", "resourses/power-drill.jpg", "300.1", "17", true),
+    new item("Paint brush", "tool", "resourses/paint-brush.jpg", "50.6", "5"),
+    new item("Wheelbarrow", "tool", "resourses/wheelbarrow.jpg", "120.99", "23", true),
+    new item("Saw", "resourses/saw.jpg", "tool", "75.0$", "9%"),
+    new item("steel rods", "steel", "resourses/rods.jpg", "10.0", "0"),
+    new item("iron rods", "steel", "resourses/rust rods.jpg", "9.2", "3"),
+    new item("steel bars", "steel", "resourses/square bars.jpg", "15.5", "0", true),
+    new item("steal weave", "steel", "resourses/metal weave.jpg", "15.0", "0"),
+    new item("texture-1", "wood", "resourses/wood1.jpg", "20", "9"), 
+    new item("texture-2", "wood", "resourses/wood2.jpg", "23.0", "3"),
+    new item("texture-3", "wood", "resourses/wood3.jpg", "22.0", "0", true),
+    new item("texture-4", "wood", "resourses/wood4.jpg", "25.0", "0")
 ];
 
 let index = 0;
