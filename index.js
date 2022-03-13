@@ -42,7 +42,7 @@ allItems.forEach(product => {
     modalContent.classList.add("modal-item");
     modalContent.value = index;
     modalContent.innerHTML = `
-        <p class="cancel-modal">X</p>
+        <p class="cancel-modal" value="${index}">X</p>
         <img src="/${product.source}" width="50%">
         <p>${product.name}<br>
             <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${product.price}</button>
@@ -99,6 +99,7 @@ itemImages.forEach(itemImage => {
 
 document.querySelectorAll(".cancel-modal").forEach(cancel => {
     cancel.addEventListener("click", function(){
+        modalItems[parseInt(cancel.getAttribute("value"))].style.display = "none";
         document.getElementById("modal-overlay").style.display = "none";
         document.getElementById("nav").classList.add("sticky-top");
         document.body.style.overflow = "scroll";
@@ -197,9 +198,9 @@ document.getElementById('purchase').addEventListener("click", function(){
 })
 
 document.getElementById("search").addEventListener("click", function(){
-    let searchValue = document.getElementById("search-input").value;
     allItems.forEach(_item => {
-        if (_item.name === searchValue){
+        let searchValue = document.getElementById("search-input").value;
+        if (_item.name.toLowerCase() === searchValue.toLowerCase()){
             let index = allItems.indexOf(_item);
             document.getElementById("modal-overlay").style.display = "block";
             modalItems[index].style.display = "block";
