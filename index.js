@@ -198,8 +198,9 @@ document.getElementById('purchase').addEventListener("click", function(){
 })
 
 document.getElementById("search").addEventListener("click", function(){
+    let searchValue = document.getElementById("search-input").value;
+    let count = 0;
     allItems.forEach(_item => {
-        let searchValue = document.getElementById("search-input").value;
         if (_item.name.toLowerCase() === searchValue.toLowerCase()){
             let index = allItems.indexOf(_item);
             document.getElementById("modal-overlay").style.display = "block";
@@ -207,5 +208,12 @@ document.getElementById("search").addEventListener("click", function(){
             document.getElementById("nav").classList.remove("sticky-top");
             document.body.style.overflow = "hidden";
         }
+        else {count++}
     })
+    if (count === allItems.length){
+        alert("No item matched your search, please try again with a different keyword");
+    }
+    document.getElementById("search-input").value = "";
 })
+
+document.getElementById("search-input").focus();
