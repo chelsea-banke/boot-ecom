@@ -195,3 +195,16 @@ document.getElementById('purchase').addEventListener("click", function(){
     displayCart();
     window.alert("purchase complete");
 })
+
+document.getElementById("search").addEventListener("click", function(){
+    let searchValue = document.getElementById("search-input").value;
+    allItems.forEach(_item => {
+        if (_item.name === searchValue){
+            let index = allItems.indexOf(_item);
+            document.getElementById("modal-overlay").style.display = "block";
+            modalItems[index].style.display = "block";
+            document.getElementById("nav").classList.remove("sticky-top");
+            document.body.style.overflow = "hidden";
+        }
+    })
+})
