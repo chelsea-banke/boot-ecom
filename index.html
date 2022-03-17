@@ -96,7 +96,9 @@
         #promo-carousel{
             background-color: rgb(0, 0, 0);
             overflow: hidden;
-            height: 300px;
+            height: 600px;
+            width: 500px;
+            margin: auto;
         }
         #banner{
             scroll-margin-top: -100px;
@@ -141,9 +143,9 @@
             border-radius: 5px;
             padding-top: 10px;
             padding-bottom: 10px;
-            width: 75%;
+            width: 50%;
             margin: auto;
-            margin-top: 55%;
+            margin-top: 5%;
             display: none;
         }
         .cancel-modal{
@@ -163,9 +165,9 @@
             100%{right: -15px;}
         }
         @keyframes carousel-display{
-            0%{right: -200px;}
+            0%{right: -400px;}
             50%{right: 0px;}
-            100%{right: 400px;}
+            100%{right: 600px;}
         }
         @keyframes cart-display{
             0%{right: -200px;}
@@ -178,6 +180,14 @@
             }
         }
         @media screen and (max-width: 434px) {
+            #promo-carousel{
+                width: 100%;
+                height: 300px;
+            }
+            .modal-item{
+                width: 75%;
+                margin-top: 55%;
+            }
             .logo{
                 margin-left: 10px;
             }
@@ -196,6 +206,11 @@
             #cart{
                 right: 20px;
                 /* margin-top: 0px; */
+            }
+            @keyframes carousel-display{
+                0%{right: -250px;}
+                50%{right: 0px;}
+                100%{right: 400px;}
             }
         }
         @media only screen and (max-width: 360px) {

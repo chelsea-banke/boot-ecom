@@ -31,7 +31,7 @@ allItems.forEach(product => {
         carouselItem.classList.add("carousel-item");
         carouselItem.value = index;
         carouselItem.innerHTML = `
-            <img class="item-image" src="/${product.source}" width="50%" value="${index}"> 
+            <img class="item-image" src="/${product.source}" width="50%" height="auto" value="${index}"> 
             <p>${product.name}<br>
                 <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${product.price}$</button>
             </p>`
@@ -211,7 +211,7 @@ document.getElementById("search").addEventListener("click", function(){
         else {count++}
     })
     if (count === allItems.length){
-        alert("No item matched your search, please try again with a different keyword");
+        alert("No item matched your search request, please try again with a different keyword");
     }
     document.getElementById("search-input").value = "";
 })
