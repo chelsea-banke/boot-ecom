@@ -33,7 +33,7 @@ allItems.forEach(product => {
         carouselItem.innerHTML = `
             <img class="item-image" src="/${product.source}" width="50%" value="${index}"> 
             <p>${product.name}<br>
-                <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${product.price}</button>
+                <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${product.price}$</button>
             </p>`
         document.getElementById("promo-carousel").append(carouselItem);
     }
@@ -45,7 +45,7 @@ allItems.forEach(product => {
         <p class="cancel-modal" value="${index}">X</p>
         <img src="/${product.source}" width="50%">
         <p>${product.name}<br>
-            <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${product.price}</button>
+            <button type="button" class="btn btn-success shop" value="${index}">Add to Cart/ ${product.price}$</button>
         </p>
     `
     document.getElementById("modal-overlay").append(modalContent);
