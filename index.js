@@ -51,12 +51,13 @@ allItems.forEach(product => {
     document.getElementById("modal-overlay").append(modalContent);
 
     let itemContainer = document.createElement("div");
-    itemContainer.classList.add("col-4", "thumbnail");
+    itemContainer.classList.add("product-image-container");
     itemContainer.innerHTML = `
         <button class="btn item-image" value="${index}">
-            <img src="/${product.source}" style="width: 100%" alt="${product.name}">
+            <img src="/${product.source}" style="width: 100px" alt="${product.name}">
         </button>
         <p class="text-dark">${product.name}</p>`
+    itemContainer.style.display = "inline-block";
 
     if (product.category === "tool"){document.getElementById("tool-gallery").append(itemContainer)}
     else if(product.category === "steel"){document.getElementById("steel-gallery").append(itemContainer)}
