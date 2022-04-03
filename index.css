@@ -259,6 +259,9 @@ a{text-decoration: none;}
     #product-container{
         margin-top: 80px;
     }
+    #product-desc{
+        margin-top: 80px;
+    }
     @keyframes carousel-display{
         0%{right: -250px;}
         50%{right: 0px;}
