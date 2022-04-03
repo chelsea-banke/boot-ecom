@@ -170,13 +170,13 @@ a{text-decoration: none;}
     border: none;
 }
 .offers{
-    width: 80%;
+    width: 100%;
     border-radius: 5px;
     background-color: rgb(54, 54, 54);
     margin: auto;
     padding: 25px;
     padding-top: 5px;
-    text-align: center;
+    /* text-align: center; */
 }
 .carousel-item img{
     width: 250px;
@@ -184,6 +184,15 @@ a{text-decoration: none;}
 }
 #product-container{
     margin-top: 100px;
+}
+.individual-offers{
+    margin-top: 10px;
+}
+.individual-offers div{
+    width: 100%;
+}
+.individual-offers div img{
+    width: 100%;
 }
 @keyframes menu-display{
     0%{right: -200px;}
@@ -207,6 +216,9 @@ a{text-decoration: none;}
     }
 } */
 @media screen and (max-width: 434px) {
+    .offers{
+        text-align: center;
+    }
     #product-desc{
         margin-top: 30px;
     }
