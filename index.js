@@ -175,6 +175,11 @@ shop.forEach(shopedItem => {
         displayCart();
         document.getElementById("total").innerHTML = total.toFixed(2)+'$';
         localStorage.setItem('cart', JSON.stringify(shopedItems));
+
+        modalItems[parseInt(shopedItem.getAttribute("value"))].style.display = "none";
+        document.getElementById("modal-overlay").style.display = "none";
+        document.getElementById("nav").classList.add("sticky-top");
+        document.body.style.overflow = "scroll";
     })
 })
 
